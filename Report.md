@@ -64,6 +64,9 @@ In our specific scenario, it is important to recognize the symmetrical nature of
 As a result, our first approach was "simply" to re-use/adapt DDPG algorithm in a multi-agent setting where each agent:
  - store their experiences in a shared replay buffer and;
  - share the same actor and critic network.
+ 
+## Network Architecture
+The actor and critic share the same network. The network consists of 2 hidden layers with 128 hidden neurons in the 1st hidden layer and 64 hidden neurons in the 2nd hidden layer. A dense neural network architecture is used with ReLU activation function for the hidden layers and a tanh activation function for the output layer, which has 2 output neurons corresponding to the action space.
 
 ## Training algorithm
  - Actor Network and Critic Network of target agents are soft-updated respectively.
@@ -117,6 +120,7 @@ The scores are quite noisy, as it is often the case with multi-agent tasks, but 
 
 ## Ideas for future work
 - Because of the symmetry of the environment, each agent mirrors the behavior of the other. A more challenging task would be something like a Soccer environment, where multiple agents would have to act independently.
+- Regularizers like Dropout and L2 could also be used.
 - `Hyperparameter optimization` : To tune the hyperparameters better, a systemic search in the hyperparameter space could be performed. Many of the hyperparameters, such as the network architectures (number of layers and neurons), learning rates, batch and buffer sizes, and the level of noise, could be tuned in such a way to improve performance.
 - `Prioritized experience replay` : We selected experience tuples randomly for this implementation. However, prioritized replay selects experiences based on a priority value that is correlated with the magnitude of error. This can improve learning by increasing the probability that rare or important experience vectors are sampled.
 - Need to explore stabilization techniques for multi-agent systems. As we can see from the plot below, even after solving the environment the learning is highly unstable.
