@@ -66,7 +66,7 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
 ## Results
  - The agents are trained until they solve the environment, that is to say when one the two agents obtains an average reward of at least +0:5 over the last 100 episode.
- - Using the specified setup and after hyperparameters tuning ,the environment was solved in about `1141 episodes in less than 5 min on a laptop and without GPU`.
+ - Using the specified setup and after hyperparameters tuning ,the environment was solved in about `1463 episodes in about 5 min on a laptop and without GPU`.
 
  
 ### Plot of the result
